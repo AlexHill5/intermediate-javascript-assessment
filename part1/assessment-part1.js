@@ -37,33 +37,38 @@ function daBears(){
   }
 }
 
+
 // Remove entries from the following arrays until only correct answers remain.
 // A correct answer will be an array of strings that are function names.
 
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+//  , "babyBear", "goldilocks""daBears", 
+
+var fairyTale1 = ["papaBear", "mamaBear"];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
+// "daBears", "papaBear", "mamaBear", "babyBear", 
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ["goldilocks"];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
+// "daBears","babyBear", "goldilocks""papaBear", 
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = [ "mamaBear" ];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ["daBears", "papaBear", "mamaBear", "goldilocks"];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear"];
 
 
 // *************
@@ -81,7 +86,23 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // the other called "mustang".  Using implicit context, invoke the drive method on
 // "charger" once, and invoke it twice on "mustang".
 
-// CODE HERE...
+function Vehicle(gasRemaining){
+  this.gasRemaining = gasRemaining = 100
+}
+
+Vehicle.prototype.drive = function(){
+  this.gasRemaining -= 25
+}
+
+var mustang = new Vehicle()
+mustang.drive()
+mustang.drive()
+
+
+var charger = new Vehicle()
+charger.drive()
+
+
 
 
 
@@ -105,9 +126,19 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // and should neither modify them nor break when encountering them.
 
 
+String.prototype.grammarPolice = function(){
+  var copy = this.slice();
+  var newStr = copy.toLowerCase();
+  var newStr1 = newStr.split(' ');
 
+  for(var i = 0; i < newStr1.length; i++){
+    newStr1[i] = newStr1[i].split('');
+    newStr1[i][0] = newStr1[i][0].toUpperCase(); 
+    newStr1[i] = newStr1[i].join('');
+  }
+  return newStr1.join(' ');
+}
 
-// CODE HERE...
 
 
 
@@ -126,7 +157,13 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // In all other cases, return "Different values"
 
 // CODE HERE...
-
+function valueType(param1, param2){
+  if(typeof(param1) === typeof(param2)){
+    return "Exactly the same"
+  } else if (param1 == param2){
+    return "Same value, different types"
+  } else return "Different values"
+}
 
 
 // *************
@@ -140,4 +177,8 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 var theAnswer = "Unknown";
 
-// CODE HERE...
+function promiseCatcher(param1){
+    param1.then(function(param1){
+      return theAnswer = param1;
+    })
+}
